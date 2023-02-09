@@ -204,3 +204,7 @@ agencyCreateButton.addEventListener("click", () => {
 // TODO: create actor
 // you will add event listener for create actor button
 // and call createActor function
+actorAddButton.addEventListener("click", () => {
+    createActor();
+    window.location.reload();
+})
