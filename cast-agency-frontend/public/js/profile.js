@@ -25,7 +25,16 @@ let agencyInputSince = document.getElementById("agency-since");
 let agencyCreateButton = document.getElementById("agency-create-button");
 
 // add actor selectors
-
+let actorAddName = document.getElementById('actor-name');
+let actorAddAge = document.getElementById('actor-age');
+let actorAddGender = document.getElementById('actor-gender');
+let actorAddAvatar = document.getElementById('actor-avatar');
+let actorAddHeight = document.getElementById('actor-height');
+let actorAddWeight = document.getElementById('actor-weight');
+let actorAddEyes = document.getElementById('actor-eyes');
+let actorAddFacebook = document.getElementById('actor-facebook');
+let actorAddLinkedIn = document.getElementById('actor-linkedIn');
+let actorAddButton = document.getElementById('actor-add-button');
 
 if(token){
     axios.defaults.headers.common["Authorization"] = `${token}`;
@@ -123,7 +132,42 @@ function createAgency(){
 function createActor() {
     // TODO: create actor
     // please put your logic and call api here
-    
+    if(actorAddName.value === "" ||
+        actorAddAge.value === "" ||
+        actorAddGender.value === "" ||
+        actorAddAvatar.value === "" ||
+        actorAddHeight.value === "" ||
+        actorAddWeight.value === "" ||
+        actorAddEyes.value === "" ||
+        actorAddFacebook.value === "" ||
+        actorAddLinkedIn.value === "" )
+    {
+        alert("Please fill all inputs");
+        return;
+    }
+
+    let data = {
+        fullName: actorAddName.value,
+        age: actorAddAge.value,
+        gender: actorAddGender.value,
+        avatar: actorAddAvatar.value,
+        physical_information: {
+            height: actorAddHeight.value,
+            weight: actorAddWeight.value,
+            eyes: actorAddEyes.value,
+        },
+        social: {
+            facebook: actorAddFacebook.value,
+            linkedIn: actorAddLinkedIn.value
+        }
+    };
+
+    axios.post("http://localhost:3001/api/actors/", data)
+        .then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.log(err);
+        })
 }
 
 roleButtonGroup.forEach((item ) => {
