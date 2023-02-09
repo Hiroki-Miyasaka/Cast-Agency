@@ -1,0 +1,599 @@
+{
+	"info": {
+		"_postman_id": "fc2131f7-0c63-4934-9acd-d777d0c27798",
+		"name": "castAgency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4765475"
+	},
+	"item": [
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "get_posts",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "adsadqwe12313sadasdasdasd",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "Authorization",
+								"value": "as.eyJpZCI6IjYzZGM5MmVkY2M1ZDc5YmM0ZWViNTNjZSIsImlhdCI6MTY3NTQ2NTM4NywiZXhwIjoxNjc1NDY3MTg3fQ.P8AKnOnK0pAVAghDGhfGfLWlykElohr40s0LHnbUtc0dad",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{localhost}}/api/posts/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_post",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGM5MmVkY2M1ZDc5YmM0ZWViNTNjZSIsImlhdCI6MTY3NTQ2NDgyMSwiZXhwIjoxNjc1NDY2NjIxfQ.lliECJV4VhvJyfuem5wD7lZ3tGSVjQeu3ZItX1f9np4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"something 2\",\n    \"content\": \"hello from node class\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/posts/",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"posts",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Kubilay Cakmak\",\n    \"email\": \"kubilay@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3001/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGQ2NjkyZWY0MzNhYTFkZmI4YzRjNCIsImlhdCI6MTY3NTQ1NTc4NSwiZXhwIjoxNjgzMjMxNzg1fQ.b9bsvsDSmJ0m6Z2J4-916Y5H7UCYkCflRM2d97T3Tj0",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{localhost}}/api/auth/logout",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var headerValue = pm.response.headers.get(\"Authorization\")",
+									"// console.log(headerValue)",
+									"pm.environment.set(\"token\", headerValue);",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"kubilayckmk@gmail.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/auth/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "actor",
+			"item": [
+				{
+					"name": "get_all_actors",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/actors/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create_actor",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"John Doe\",\n    \"age\": 26,\n    \"gender\": \"Male\",\n    \"physical_information\": {\n        \"height\": 180,\n        \"weight\": 70,\n        \"eyes\": \"blue\"\n    },\n    \"social\": {\n        \"facebook\": \"www.facebook.com/johndoe\",\n        \"linkedIn\": \"www.twitter.com/johndoe\"\n    },\n    \"agent\": \"63e1c31777019369d59fd50f\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/actors/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_actor",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fullName\": \"Adam Sandler\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/actors/63e1d74052d214c8ccead651",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								"63e1d74052d214c8ccead651"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_actor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/actors/63e1d74052d214c8ccead651",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"actors",
+								"63e1d74052d214c8ccead651"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cast",
+			"item": [
+				{
+					"name": "create_cast",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "{{token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Cast Agency B\",\n    \"location\": \"New York NY\",\n    \"phoneNumber\": \"555-555-5555\",\n    \"website\": \"https://cast-agency-b.com\",\n    \"email\": \"castagency@b.com\",\n    \"bio\": \"Hello we are the best agency in town!\",\n    \"logo\": \"https://cdn3d.iconscout.com/3d/free/preview/online-shopping-store-4257241-3543548@0.png?f=avif&h=1400\",\n    \"since\": 2002\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/agency/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"agency",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_agency_by_id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/agency/63e1c16d495fdb8932482ce2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"agency",
+								"63e1c16d495fdb8932482ce2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_all_agency",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/agency/",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"agency",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update_agency_information",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bio\": \"this is newer bio information 3\",\n    \"phoneNumber\": \"555-212-2342\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}/api/agency/63e1c31777019369d59fd50f",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"agency",
+								"63e1c31777019369d59fd50f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_agency_by_id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}/api/agency/63e1c16d495fdb8932482ce2",
+							"host": [
+								"{{localhost}}"
+							],
+							"path": [
+								"api",
+								"agency",
+								"63e1c16d495fdb8932482ce2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "get_users",
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "Authorization",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZGQ2NjkyZWY0MzNhYTFkZmI4YzRjNCIsImlhdCI6MTY3NTQ1NjI2OCwiZXhwIjoxNjgzMjMyMjY4fQ.CE4FeZYjhIZgTQqR3DR41wCNkdqAJTUmbJVF6uvyS0o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3001/api/users/",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "Authorization",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "localhost:3001",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "initValue",
+			"type": "string"
+		}
+	]
+}

@@ -1,0 +1,46 @@
+#username {
+  color: #fff;
+  font-weight: 600;
+}
+
+#list-actor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+@media (max-width: 500px) {
+  #list-actor {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 500px) {
+  #actor-title {
+    text-align: center;
+  }
+}
+
+.card-img-top {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
+#agencies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+@media (max-width: 500px) {
+  #agencies {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+/*# sourceMappingURL=main.css.map */

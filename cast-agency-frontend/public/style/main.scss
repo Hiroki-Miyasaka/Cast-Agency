@@ -1,0 +1,39 @@
+#username{
+    color: #fff;
+    font-weight: 600;
+}
+
+#list-actor{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+#actor-title{
+    @media (max-width: 500px) {
+        text-align: center;
+    }
+}
+
+.card-img-top{
+    object-fit: cover;
+    object-position: top;
+}
+
+#agencies{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    @media (max-width: 500px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
