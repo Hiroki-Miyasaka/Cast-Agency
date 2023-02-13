@@ -130,8 +130,7 @@ function createAgency(){
 }
 
 function createActor() {
-    // TODO: create actor
-    // please put your logic and call api here
+    // create actor
     if(actorAddName.value === "" ||
         actorAddAge.value === "" ||
         actorAddGender.value === "" ||
